@@ -82,20 +82,25 @@
 
     /* Buku muncul dari amplop */
     .birthday-card {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) scale(0.8);
-      opacity: 0;
-      animation: emergeFromEnvelope 1s ease-in-out 2.5s forwards,
-                 moveToCenter 1s ease-in-out 3.5s forwards;
-      z-index: 10;
-      width: 300px;
-      height: 430px;
-      border: 10px solid #e6cfa7;
-      background: white;
-      box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
-    }
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  opacity: 0;
+  animation: emergeFromEnvelope 1s ease-in-out 2.5s forwards,
+             moveToCenter 1s ease-in-out 3.5s forwards;
+  z-index: 10;
+
+  /* Ganti ukuran fixed dengan responsif */
+  width: 90vw;       /* 90% dari lebar layar */
+  max-width: 380px;  /* batas maksimal agar tidak terlalu besar di layar lebar */
+  height: auto;      /* biar proporsional */
+  aspect-ratio: 3/4; /* jaga proporsi (bisa disesuaikan) */
+
+  border: 10px solid #e6cfa7;
+  background: white;
+  box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
+}
 
     @keyframes emergeFromEnvelope {
       0% { bottom: 0; opacity: 0; }
@@ -277,3 +282,4 @@
 
 </body>
 </html>
+
