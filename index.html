@@ -33,14 +33,17 @@
       to { transform: translateY(0); }
     }
 
-    .envelope-wrapper {
-      background: var(--bg-envelope-color);
-      box-shadow: 0 0 40px var(--shadow-color);
-      width: 350px;
-      height: 250px;
-      position: relative;
-      margin: 0 auto;
-    }
+   .envelope-wrapper {
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+  width: 80vw;          /* lebar 80% layar */
+  max-width: 600px;     /* biar gak terlalu besar di PC */
+  height: auto;
+  aspect-ratio: 7/5;    /* jaga proporsinya */
+  position: relative;
+  margin: 0 auto;
+}
+
 
     .envelope {
       width: 100%;
@@ -81,7 +84,7 @@
     }
 
     /* Buku muncul dari amplop */
-    .birthday-card {
+  .birthday-card {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -91,16 +94,16 @@
              moveToCenter 1s ease-in-out 3.5s forwards;
   z-index: 10;
 
-  /* Ganti ukuran fixed dengan responsif */
-   position: relative;
-    width: 300px;
-    height: 430px;
-  
-
+  /* ubah ukuran fixed */
+  width: 85vw;          /* hampir penuh lebar layar */
+  max-width: 500px;     /* batasi di PC */
+  height: auto;
+  aspect-ratio: 3/4;    /* biar tetap proporsional */
   border: 10px solid #e6cfa7;
   background: white;
   box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
 }
+
 
     @keyframes emergeFromEnvelope {
       0% { bottom: 0; opacity: 0; }
@@ -282,6 +285,7 @@
 
 </body>
 </html>
+
 
 
 
