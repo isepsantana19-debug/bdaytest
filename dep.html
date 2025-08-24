@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <link rel="shortcut icon" href="Happy_Birthday_Salome_Cake.png" type="image/x-icon">
+  <style>
+    :root {
+      --primary: white;
+      --bg-color: #F7E7CE;
+      --bg-envelope-color: #f5edd1;
+      --envelope-tab: #ecdeb8;
+      --envelope-cover: #e6cfa7;
+      --shadow-color: #1c1c1c;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-color);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      animation: fall 1.5s ease-out forwards;
+      transform: translateY(-100vh);
+    }
+    @keyframes fall {
+      to { transform: translateY(0); }
+    }
+
+    .envelope-wrapper {
+      background: var(--bg-envelope-color);
+      box-shadow: 0 0 40px var(--shadow-color);
+      width: 350px;
+      height: 250px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: 3;
+      border-top: 130px solid var(--envelope-tab);
+      border-right: 175px solid transparent;
+      border-left: 175px solid transparent;
+      transform-origin: top;
+      transform: rotateX(0deg);
+      animation: flapOpen 1s ease-in-out 1.5s forwards;
+    }
+    @keyframes flapOpen { to { transform: rotateX(180deg); } }
+
+    .envelope::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      width: 0;
+      height: 0;
+      border-top: 130px solid transparent;
+      border-right: 175px solid var(--envelope-cover);
+      border-bottom: 120px solid var(--envelope-cover);
+      border-left: 175px solid var(--envelope-cover);
+      top: 0;
+      left: 0;
+    }
+
+    /* Buku muncul dari amplop */
+    .birthday-card {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scale(0.8);
+      opacity: 0;
+      animation: emergeFromEnvelope 1s ease-in-out 2.5s forwards,
+                 moveToCenter 1s ease-in-out 3.5s forwards;
+      z-index: 10;
+      width: 300px;
+      height: 430px;
+      border: 10px solid #e6cfa7;
+      background: white;
+      box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
+    }
+
+    @keyframes emergeFromEnvelope {
+      0% { bottom: 0; opacity: 0; }
+      100% { bottom: 120px; opacity: 1; }
+    }
+    @keyframes moveToCenter {
+      0% { bottom: 120px; transform: translateX(-50%) scale(0.8); }
+      100% { bottom: 50%; left: 50%; transform: translate(-50%,50%) scale(1); position: fixed; }
+    }
+
+    /* Cover luar */
+    .cover-outer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: -10px 0 0 -10px;
+      border: 10px solid #e6cfa7;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transform-origin: 0% 50%;
+      transform: perspective(800px) rotateY(0deg);
+      transition: all 0.8s ease-in-out;
+    }
+    .cover-outer img {
+      box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
+      border-radius: 5px;
+    }
+
+    /* Cover dalam */
+    .cover-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 10px solid #e6cfa7;
+      background-color: #e6cfa7;
+      margin: -10px 0px 0 -10px;
+      backface-visibility: visible;
+      transform-style: preserve-3d;
+      transform-origin: 0% 50%;
+      transform: perspective(800px) rotateY(0deg);
+      transition: all 0.8s ease-in-out;
+      overflow: hidden;
+    }
+    .cover-inner img {
+      transform: rotateY(170deg);
+    }
+
+    /* Efek buka */
+    .birthday-card.open .cover-outer {
+      transform: perspective(800px) rotateY(-170deg);
+    }
+    .birthday-card.open .cover-inner {
+      transform: perspective(800px) rotateY(-170deg);
+      box-shadow: 7px 0 5px 0 rgba(0, 0, 0, 0.3),
+                  inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Text dalam buku */
+    .text {
+      width: 95%;
+      height: 100%;
+      font-weight: bold;
+      margin: auto;
+      font-family: sans-serif;
+    }
+    .text > p {
+      font-size: 10px;
+      color: #000;
+      line-height: 1.4;
+      text-align: justify;
+      margin: 10px auto 0 auto;
+    }
+    .text .title {
+      font-size: 14px;
+      text-align: center;
+      font-weight: bold;
+      margin: 10px auto 5px auto;
+    }
+
+    /* Tombol */
+    #bookButtons {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+      z-index: 20;
+      text-align: center;
+    }
+    #bookButtons.show {
+      display: block;
+      opacity: 1;
+    }
+    .center-bottom {
+      background-color: transparent;
+      color: black;
+      font-weight: bold;
+      border: transparent;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      animation: pulse 1s infinite;
+    }
+    /* .center-bottom:hover {
+      background-color: #d94747;
+      color: white;
+    } */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    /* Animasi tangan */
+    .hand {
+      font-size: 2em;
+      display: inline-block;
+      margin-left: 8px;
+      animation: pointDown 1s infinite;
+    }
+    @keyframes pointDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope-wrapper">
+      <div class="envelope"></div>
+      <!-- Buku -->
+      <div id="book" class="birthday-card">
+        <div class="cover-inner">
+          <img src="cv-inner.png" width="100%" />
+        </div>
+        <div class="cover-outer">
+          <img src="cover-out.png" width="100%" />
+        </div>
+        <div class="text">
+          <p class="title">HBD Lomi!!! 🎉</p>
+          <p>
+            
+          </p>
+        </div>
+        <audio autoplay>
+          <source src="The 1975 - About You.mp3" type="audio/mp3" />
+        </audio>
+
+        <div id="bookButtons">
+          <button id="toggleBook" class="center-bottom">
+            Click to Open 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+  setTimeout(() => {
+    document.getElementById("bookButtons").classList.add("show");
+  }, 4500);
+
+  document.getElementById("toggleBook").addEventListener("click", function () {
+    var book = document.getElementById("book");
+    var button = document.getElementById("toggleBook");
+
+    if (book.classList.contains("open")) {
+      book.classList.remove("open");
+      button.textContent = "Click to open";
+    } else {
+      book.classList.add("open");
+      button.textContent = "Clik to close";
+    }
+  });
+</script>
+
+</body>
+</html>
