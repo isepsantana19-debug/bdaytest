@@ -36,12 +36,20 @@
    .envelope-wrapper {
   background: var(--bg-envelope-color);
   box-shadow: 0 0 40px var(--shadow-color);
-   width: 700px;
-    height: 500px;
-  aspect-ratio: 7/5;    /* jaga proporsinya */
+  width: 700px;
+  height: 500px;
+  aspect-ratio: 7/5;
   position: relative;
   margin: 0 auto;
+
+  animation: fadeOutEnvelope 1s ease-in-out 4.5s forwards; /* amplop menghilang */
 }
+@keyframes fadeOutEnvelope {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+
 
     .envelope {
       width: 100%;
@@ -96,7 +104,6 @@
    position: absolute;
     width: 350px;
     height: 500px;
-
   border: 10px solid #e6cfa7;
   background: white;
   box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
@@ -233,7 +240,7 @@
   <div class="container">
     <div class="envelope-wrapper">
       <div class="envelope"></div>
-      <!-- Buku -->
+      <!-- Buku --></div>
       <div id="book" class="birthday-card">
         <div class="cover-inner">
           <img src="cv-inner.png" width="100%" />
