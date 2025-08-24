@@ -36,14 +36,12 @@
    .envelope-wrapper {
   background: var(--bg-envelope-color);
   box-shadow: 0 0 40px var(--shadow-color);
-  width: 80vw;          /* lebar 80% layar */
-  max-width: 600px;     /* biar gak terlalu besar di PC */
-  250px;
+   width: 700px;
+    height: 500px;
   aspect-ratio: 7/5;    /* jaga proporsinya */
   position: relative;
   margin: 0 auto;
 }
-
 
     .envelope {
       width: 100%;
@@ -60,9 +58,9 @@
       right: 0;
       margin: auto;
       z-index: 3;
-      border-top: 130px solid var(--envelope-tab);
-      border-right: 175px solid transparent;
-      border-left: 175px solid transparent;
+      border-top: 300px solid var(--envelope-tab);
+      border-right: 350px solid transparent;
+      border-left: 350px solid transparent;
       transform-origin: top;
       transform: rotateX(0deg);
       animation: flapOpen 1s ease-in-out 1.5s forwards;
@@ -75,17 +73,17 @@
       z-index: 2;
       width: 0;
       height: 0;
-      border-top: 130px solid transparent;
-      border-right: 175px solid var(--envelope-cover);
-      border-bottom: 120px solid var(--envelope-cover);
-      border-left: 175px solid var(--envelope-cover);
+      border-top: 300px solid transparent;
+      border-right: 350px solid var(--envelope-cover);
+      border-bottom: 220px solid var(--envelope-cover);
+      border-left: 350px solid var(--envelope-cover);
       top: 0;
       left: 0;
     }
 
     /* Buku muncul dari amplop */
-  .birthday-card {
-  position: absolute;
+    .birthday-card {
+
   bottom: 0;
   left: 50%;
   transform: translateX(-50%) scale(0.8);
@@ -95,15 +93,14 @@
   z-index: 10;
 
   /* ubah ukuran fixed */
-  width: 85vw;          /* hampir penuh lebar layar */
-  max-width: 500px;     /* batasi di PC */
-  height: 430px;
-  aspect-ratio: 3/4;    /* biar tetap proporsional */
+   position: absolute;
+    width: 350px;
+    height: 500px;
+
   border: 10px solid #e6cfa7;
   background: white;
   box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
 }
-
 
     @keyframes emergeFromEnvelope {
       0% { bottom: 0; opacity: 0; }
@@ -285,6 +282,7 @@
 
 </body>
 </html>
+
 
 
 
