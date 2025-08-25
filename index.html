@@ -234,6 +234,23 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(6px); }
     }
+/* Untuk layar HP */
+@media (max-width: 768px) {
+  .birthday-card {
+    width: 90vw;   /* hampir memenuhi lebar layar */
+    height: auto;  /* tinggi menyesuaikan konten */
+    max-height: 90vh; /* tidak melebihi tinggi layar */
+  }
+
+  .birthday-card .text > p {
+    font-size: 12px;  /* biar tetap terbaca di layar kecil */
+  }
+
+  .birthday-card .text .title {
+    font-size: 16px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -301,4 +318,5 @@ Happy 18th birthday once again—may this be the beginning of a new chapter fill
 
 </body>
 </html>
+
 
