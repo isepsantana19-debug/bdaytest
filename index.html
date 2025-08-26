@@ -236,9 +236,9 @@
     }
 
     /* Responsive styles for phones */
-    @media (max-width: 1000px) {
+    @media (max-width: 2000px) {
       body{
-        background-color: #000;
+        background-color: white;
       }
       .envelope-wrapper {
         width: 90vw;
@@ -358,25 +358,24 @@ Happy 18th birthday once again may this be the beginning of a new chapter filled
 </script>
 <script>
 function fitText() {
-  const container = document.querySelector(".text");
-  const parent = container.parentElement;
+  const text = document.querySelector(".pp");
+  const parent = document.querySelector(".birthday-card");
   
-  let fontSize = 16; // ukuran awal
-  container.style.fontSize = fontSize + "px";
+  let fontSize = 14; // mulai agak besar
+  text.style.fontSize = fontSize + "px";
   
-  // kecilkan font sampai muat di dalam parent
   while (
-    (container.scrollHeight > parent.clientHeight || 
-     container.scrollWidth > parent.clientWidth) && 
-    fontSize > 8
+    (text.scrollHeight > parent.clientHeight - 40) && // biar muat tinggi
+    fontSize > 7
   ) {
     fontSize -= 1;
-    container.style.fontSize = fontSize + "px";
+    text.style.fontSize = fontSize + "px";
   }
 }
 
 window.addEventListener("load", fitText);
 window.addEventListener("resize", fitText);
+
 </script>
 
 
