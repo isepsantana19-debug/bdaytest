@@ -247,18 +247,13 @@
 /* Untuk layar HP */
 @media (max-width: 768px) {
   .birthday-card {
-    position: fixed !important;   /* paksa posisi fixed */
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) scale(1) !important;
-
-    width: 95vw !important;       
-    height: calc(95vw * 10 / 7) !important; 
-    max-height: 95vh !important; 
+    width: 95vw;
+    height: calc(95vw * 10 / 7); /* jaga rasio */
+    max-height: 95vh;
   }
 
   .birthday-card .text {
-    overflow-y: auto; 
+    overflow-y: auto; /* biar teks bisa discroll */
   }
 
   .birthday-card .text > p {
@@ -270,6 +265,7 @@
     font-size: 18px;
   }
 }
+
 
   </style>
 </head>
@@ -338,6 +334,7 @@ Happy 18th birthday once again may this be the beginning of a new chapter filled
 
 </body>
 </html>
+
 
 
 
