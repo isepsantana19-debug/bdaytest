@@ -233,14 +233,6 @@
       50% { transform: translateY(6px); }
     }
 
-    /* Responsive styles for phones */
-    @media (max-width: 768px) {
-      .envelope-wrapper {
-        width: 90vw;
-        height: 65vw;
-        max-width: 500px;
-        max-height: 357px;
-      }
       
       .birthday-card {
         width: 80vw;
@@ -285,16 +277,20 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .birthday-card { width: 90vw; height: 120vw; max-height: 90vh; }
-      .text > p { font-size: 12px; }
-      .text .title { font-size: 16px; }
-    }
-    @media (max-width: 480px) {
-      .birthday-card { width: 95vw; height: 130vw; }
-      .text > p { font-size: 11px; }
-      .text .title { font-size: 15px; }
-    }
+  @media (max-width: 768px) {
+  .birthday-card { 
+    width: 85vw;   /* dari 90vw → 85vw */
+    height: 110vw; /* dari 120vw → 110vw */
+    max-height: 85vh; 
+  }
+}
+
+@media (max-width: 480px) {
+  .birthday-card { 
+    width: 88vw;   /* dari 95vw → 88vw */
+    height: 120vw; /* dari 130vw → 120vw */
+  }
+}
   </style>
 </head>
 <body>
@@ -362,3 +358,4 @@ Happy 18th birthday once again may this be the beginning of a new chapter filled
 
 </body>
 </html>
+
