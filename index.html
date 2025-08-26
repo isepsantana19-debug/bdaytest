@@ -113,11 +113,21 @@
       0% { bottom: 0; opacity: 0; }
       100% { bottom: 120px; opacity: 1; }
     }
-    @keyframes moveToCenter {
-      0% { bottom: 120px; transform: translateX(-50%) scale(0.8); }
-      100% { bottom: 50%; left: 50%; transform: translate(-50%,50%) scale(1); position: fixed; }
-    }
 
+@keyframes moveToCenter {
+  0% {
+    bottom: 120px;
+    transform: translateX(-50%) scale(0.8);
+  }
+  100% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    position: fixed;
+  }
+}
+
+    
     /* Cover luar */
     .cover-outer {
       position: absolute;
@@ -328,6 +338,7 @@ Happy 18th birthday once again may this be the beginning of a new chapter filled
 
 </body>
 </html>
+
 
 
 
