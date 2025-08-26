@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Birthday!</title>
+  <link rel="shortcut icon" href="Happy_Birthday_Salome_Cake.png" type="image/x-icon">
   <style>
     :root {
       --primary: white;
@@ -11,50 +12,39 @@
       --bg-envelope-color: #f5edd1;
       --envelope-tab: #ecdeb8;
       --envelope-cover: #e6cfa7;
-      --shadow-color: rgba(0, 0, 0, 0.2);
-    }
-
-    * {
-      box-sizing: border-box;
+      --shadow-color: #1c1c1c;
     }
 
     body {
       margin: 0;
-      padding: 20px;
       background: var(--bg-color);
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow-x: hidden;
-      font-family: 'Arial', sans-serif;
+      overflow: hidden;
     }
 
     .container {
       position: relative;
-      width: 100%;
-      max-width: 700px;
-      display: flex;
-      justify-content: center;
       animation: fall 1.5s ease-out forwards;
       transform: translateY(-100vh);
     }
-    
     @keyframes fall {
       to { transform: translateY(0); }
     }
 
-    .envelope-wrapper {
+   .envelope-wrapper {
       background: var(--bg-envelope-color);
-      box-shadow: 0 0 20px var(--shadow-color);
-      width: 100%;
-      max-width: 500px;
-      height: 350px;
+      box-shadow: 0 0 40px var(--shadow-color);
+      width: 700px;
+      height: 500px;
+      aspect-ratio: 7/5;
       position: relative;
       margin: 0 auto;
-      animation: fadeOutEnvelope 1s ease-in-out 4.5s forwards;
+
+      animation: fadeOutEnvelope 1s ease-in-out 4.5s forwards; /* amplop menghilang */
     }
-    
     @keyframes fadeOutEnvelope {
       0% { opacity: 1; }
       100% { opacity: 0; visibility: hidden; }
@@ -75,17 +65,14 @@
       right: 0;
       margin: auto;
       z-index: 3;
-      border-top: 180px solid var(--envelope-tab);
-      border-right: 250px solid transparent;
-      border-left: 250px solid transparent;
+      border-top: 300px solid var(--envelope-tab);
+      border-right: 350px solid transparent;
+      border-left: 350px solid transparent;
       transform-origin: top;
       transform: rotateX(0deg);
       animation: flapOpen 1s ease-in-out 1.5s forwards;
     }
-    
-    @keyframes flapOpen { 
-      to { transform: rotateX(180deg); } 
-    }
+    @keyframes flapOpen { to { transform: rotateX(180deg); } }
 
     .envelope::after {
       content: "";
@@ -93,23 +80,16 @@
       z-index: 2;
       width: 0;
       height: 0;
-      border-top: 180px solid transparent;
-      border-right: 250px solid var(--envelope-cover);
-      border-bottom: 170px solid var(--envelope-cover);
-      border-left: 250px solid var(--envelope-cover);
+      border-top: 300px solid transparent;
+      border-right: 350px solid var(--envelope-cover);
+      border-bottom: 220px solid var(--envelope-cover);
+      border-left: 350px solid var(--envelope-cover);
       top: 0;
       left: 0;
     }
 
-    /* Birthday card styling */
+    /* Buku muncul dari amplop */
     .birthday-card {
-      position: absolute;
-      width: 300px;
-      height: 420px;
-      border: 8px solid #e6cfa7;
-      background: white;
-      box-shadow: inset 8px 0px 12px 0px rgba(0,0,0,0.1),
-                  0 5px 15px rgba(0, 0, 0, 0.2);
       bottom: 0;
       left: 50%;
       transform: translateX(-50%) scale(0.8);
@@ -117,113 +97,98 @@
       animation: emergeFromEnvelope 1s ease-in-out 2.5s forwards,
                  moveToCenter 1s ease-in-out 3.5s forwards;
       z-index: 10;
-      overflow: hidden;
+
+      /* ubah ukuran fixed */
+      position: absolute;
+      width: 350px;
+      height: 500px;
+      border: 10px solid #e6cfa7;
+      background: white;
+      box-shadow: inset 10px 0px 15px 0px rgba(0,0,0,0.1);
     }
 
     @keyframes emergeFromEnvelope {
       0% { bottom: 0; opacity: 0; }
       100% { bottom: 120px; opacity: 1; }
     }
-    
     @keyframes moveToCenter {
       0% { bottom: 120px; transform: translateX(-50%) scale(0.8); }
-      100% { bottom: 50%; left: 50%; transform: translate(-50%, 50%) scale(1); }
+      100% { bottom: 50%; left: 50%; transform: translate(-50%,50%) scale(1); position: fixed; }
     }
 
-    /* Cover styling */
+    /* Cover luar */
     .cover-outer {
       position: absolute;
       width: 100%;
       height: 100%;
-      margin: -8px 0 0 -8px;
-      border: 8px solid #e6cfa7;
+      margin: -10px 0 0 -10px;
+      border: 10px solid #e6cfa7;
       backface-visibility: hidden;
       transform-style: preserve-3d;
       transform-origin: 0% 50%;
       transform: perspective(800px) rotateY(0deg);
       transition: all 0.8s ease-in-out;
-      background: linear-gradient(135deg, #f6e6c7 0%, #e6cfa7 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    
-    .cover-outer::before {
-      content: "Happy Birthday";
-      font-size: 24px;
-      font-weight: bold;
-      color: #8B4513;
-      text-align: center;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    .cover-outer img {
+      box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
+      border-radius: 5px;
     }
 
+    /* Cover dalam */
     .cover-inner {
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 8px solid #e6cfa7;
-      background-color: #f9f3e5;
-      margin: -8px 0px 0 -8px;
+      border: 10px solid #e6cfa7;
+      background-color: #e6cfa7;
+      margin: -10px 0px 0 -10px;
       backface-visibility: visible;
       transform-style: preserve-3d;
       transform-origin: 0% 50%;
       transform: perspective(800px) rotateY(0deg);
       transition: all 0.8s ease-in-out;
       overflow: hidden;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
+    }
+    .cover-inner img {
+      transform: rotateY(170deg);
     }
 
-    /* Open effect */
+    /* Efek buka */
     .birthday-card.open .cover-outer {
       transform: perspective(800px) rotateY(-170deg);
     }
-    
     .birthday-card.open .cover-inner {
       transform: perspective(800px) rotateY(-170deg);
-      box-shadow: 5px 0 5px 0 rgba(0, 0, 0, 0.2),
+      box-shadow: 7px 0 5px 0 rgba(0, 0, 0, 0.3),
                   inset 2px 0px 15px 0px rgba(0, 0, 0, 0.1);
     }
 
-    /* Text styling */
+    /* Text dalam buku */
     .text {
-      width: 100%;
+      width: 95%;
       height: 100%;
-      overflow-y: auto;
-      padding: 10px;
-      padding-right: 5px;
+      font-weight: bold;
+      margin: auto;
+      font-family: sans-serif;
     }
-    
-    .text::-webkit-scrollbar {
-      width: 4px;
-    }
-    
-    .text::-webkit-scrollbar-thumb {
-      background: #e6cfa7;
-      border-radius: 10px;
-    }
-    
     .text > p {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.5;
+      font-size: 10px;
+      color: #000;
+      line-height: 1.4;
       text-align: justify;
-      margin: 0 0 15px 0;
+      margin: 10px auto 0 auto;
     }
-    
     .text .title {
-      font-size: 18px;
+      font-size: 14px;
       text-align: center;
       font-weight: bold;
-      margin: 0 0 15px 0;
-      color: #8B4513;
+      margin: 10px auto 5px auto;
     }
 
-    /* Button styling */
+    /* Tombol */
     #bookButtons {
       position: absolute;
-      bottom: 15px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
       display: none;
@@ -232,138 +197,128 @@
       z-index: 20;
       text-align: center;
     }
-    
     #bookButtons.show {
       display: block;
       opacity: 1;
     }
-    
     .center-bottom {
-      background-color: #e6cfa7;
-      color: #8B4513;
+      background-color: transparent;
+      color: black;
       font-weight: bold;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 25px;
+      border: transparent;
+      padding: 8px 15px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 14px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
+      font-size: 0.9em;
+      animation: pulse 1s infinite;
     }
-    
-    .center-bottom:hover {
-      background-color: #d6bf97;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    /* .center-bottom:hover {
+      background-color: #d94747;
+      color: white;
+    } */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
-    /* Mobile responsiveness */
-    @media (max-width: 600px) {
+    /* Animasi tangan */
+    .hand {
+      font-size: 2em;
+      display: inline-block;
+      margin-left: 8px;
+      animation: pointDown 1s infinite;
+    }
+    @keyframes pointDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Responsive styles for phones */
+    @media (max-width: 768px) {
       .envelope-wrapper {
-        height: 280px;
-        max-width: 400px;
-      }
-      
-      .envelope::before {
-        border-top-width: 140px;
-        border-right-width: 200px;
-        border-left-width: 200px;
-      }
-      
-      .envelope::after {
-        border-top-width: 140px;
-        border-right-width: 200px;
-        border-bottom-width: 140px;
-        border-left-width: 200px;
+        width: 90vw;
+        height: 65vw;
+        max-width: 500px;
+        max-height: 357px;
       }
       
       .birthday-card {
-        width: 280px;
-        height: 400px;
+        width: 80vw;
+        height: 115vw;
+        max-width: 400px;
+        max-height: 575px;
+      }
+      
+      .text > p {
+        font-size: 12px;
+        line-height: 1.5;
       }
       
       .text .title {
         font-size: 16px;
       }
       
-      .text > p {
-        font-size: 13px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
+      .center-bottom {
+        font-size: 14px;
+        padding: 10px 20px;
       }
       
-      .envelope-wrapper {
-        height: 230px;
-        max-width: 340px;
-      }
-      
+      /* Adjust envelope parts for smaller screens */
       .envelope::before {
-        border-top-width: 120px;
-        border-right-width: 170px;
-        border-left-width: 170px;
+        border-top-width: 45vw;
+        border-right-width: 45vw;
+        border-left-width: 45vw;
+        max-height: 250px;
       }
       
       .envelope::after {
-        border-top-width: 120px;
-        border-right-width: 170px;
-        border-bottom-width: 110px;
-        border-left-width: 170px;
+        border-top-width: 45vw;
+        border-right-width: 45vw;
+        border-bottom-width: 30vw;
+        border-left-width: 45vw;
+        max-height: 250px;
       }
       
+      @keyframes moveToCenter {
+        0% { bottom: 120px; transform: translateX(-50%) scale(0.8); }
+        100% { bottom: 50%; left: 50%; transform: translate(-50%,50%) scale(1.1); position: fixed; }
+      }
+    }
+
+    /* For very small phones */
+    @media (max-width: 480px) {
       .birthday-card {
-        width: 260px;
-        height: 380px;
+        width: 80vw;
+        height: 120vw;
       }
       
-      .cover-outer::before {
-        font-size: 20px;
+      .text > p {
+        font-size: 11px;
       }
       
       .text .title {
         font-size: 15px;
       }
       
-      .text > p {
-        font-size: 12px;
-        line-height: 1.4;
-      }
-      
       .center-bottom {
-        padding: 8px 16px;
-        font-size: 13px;
+        font-size: 12px;
       }
     }
 
-    @media (max-width: 360px) {
+    /* For landscape orientation on phones */
+    @media (max-height: 500px) and (orientation: landscape) {
       .birthday-card {
-        width: 240px;
-        height: 360px;
+        width: 60vh;
+        height: 85vh;
       }
       
-      .text {
-        padding: 8px;
+      .text > p {
+        font-size: 2vh;
       }
-    }
-
-    /* Audio element styling */
-    audio {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 30px;
-      height: 30px;
-      opacity: 0.7;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-    
-    audio:hover {
-      opacity: 1;
-      width: 140px;
+      
+      .text .title {
+        font-size: 3vh;
+      }
     }
   </style>
 </head>
@@ -371,55 +326,64 @@
   <div class="container">
     <div class="envelope-wrapper">
       <div class="envelope"></div>
-    </div>
-    
-    <div id="book" class="birthday-card">
-      <div class="cover-outer"></div>
-      <div class="cover-inner">
+      <!-- Buku --></div>
+      <div id="book" class="birthday-card">
+        <div class="cover-inner">
+          <img src="cv-inner.png" width="100%" />
+        </div>
+        <div class="cover-outer">
+          <img src="cover-out.png" width="100%" />
+        </div>
         <div class="text">
           <p class="title">Happy 18th birthday Lomi!!! 🎉</p>
           <p>
-            How have you been? It's been a while since we last talked. I just want to say that I hope this special day brings you so much happiness. I wish that in this new chapter of your life, your days are always filled with health, blessings, and beautiful moments that make you smile every single day.
-          </p>
-          <p>
-            I know not everyone truly understands what you've been through, but I believe you have an incredible strength to overcome the heavy things in your life. Life isn't always easy, but please believe that every small step you take is already so valuable, and I'm proud of you for holding on and continuing to move forward this far.
-          </p>
-          <p>
-            Even though we've never met in person, I feel lucky to know you. You are beautiful, caring, and wonderfully intelligent. There's something about you that always amazes me, you have a unique aura something that makes you truly special.
+           How have you been? It’s been a while since we last talked. I just want to say that I hope this special day brings you so much happiness. I wish that in this new chapter of your life, your days are always filled with health, blessings, and beautiful moments that make you smile every single day.
+
+I know not everyone truly understands what you’ve been through, but I believe you have an incredible strength to overcome the heavy things in your life. Life isn’t always easy, but please believe that every small step you take is already so valuable, and I’m proud of you for holding on and continuing to move forward this far.
+
+Even though we’ve never met in person, I feel lucky to know you. You are beautiful, caring, and wonderfully intelligent. There’s something about you that always amazes me, you have a unique aura something that makes you truly special.
+
+As you step into this new age, I sincerely hope all good things will always come to you. May you find more reasons to smile, more people who make you feel loved, and more opportunities that bring you closer to your dreams.
+
+I also hope that one day there will be a chance for us to finally meet in person, talk more, and maybe hear your beautiful voice for real—not just through a voice note or the picture in my mind.
+
+Stay the way you are now strong, precious, and full of light. Don’t forget that you deserve happiness, you deserve love, and you deserve to reach all of your dreams. I’ll always be proud of you, Lomi, and I’ll keep wishing the very best for you, today and always.
+
+Happy 18th birthday once again—may this be the beginning of a new chapter filled with happiness for you.
           </p>
         </div>
-      </div>
-      
-      <audio controls>
-        <source src="https://cdn.pixabay.com/download/audio/2021/10/25/audio_172d7dec90.mp3?filename=happy-birthday-song-2021-109515.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
+        <audio autoplay>
+          <source src="The 1975 - About You.mp3" type="audio/mp3" />
+        </audio>
 
-      <div id="bookButtons">
-        <button id="toggleBook" class="center-bottom">
-          Click to Open 
-        </button>
+        <div id="bookButtons">
+          <button id="toggleBook" class="center-bottom">
+            Click to Open 
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
-  <script>
-    setTimeout(() => {
-      document.getElementById("bookButtons").classList.add("show");
-    }, 4500);
+<script>
 
-    document.getElementById("toggleBook").addEventListener("click", function () {
-      var book = document.getElementById("book");
-      var button = document.getElementById("toggleBook");
+  setTimeout(() => {
+    document.getElementById("bookButtons").classList.add("show");
+  }, 4500);
 
-      if (book.classList.contains("open")) {
-        book.classList.remove("open");
-        button.textContent = "Click to Open";
-      } else {
-        book.classList.add("open");
-        button.textContent = "Click to Close";
-      }
-    });
-  </script>
+  document.getElementById("toggleBook").addEventListener("click", function () {
+    var book = document.getElementById("book");
+    var button = document.getElementById("toggleBook");
+
+    if (book.classList.contains("open")) {
+      book.classList.remove("open");
+      button.textContent = "Click to open";
+    } else {
+      book.classList.add("open");
+      button.textContent = "Clik to close";
+    }
+  });
+</script>
+
 </body>
 </html>
