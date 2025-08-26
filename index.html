@@ -366,6 +366,24 @@ Happy 18th birthday once again may this be the beginning of a new chapter filled
     }
   });
 </script>
+<script>
+  // Auto-scale text agar muat di dalam buku
+  function fitText() {
+    const container = document.querySelector(".text");
+    container.style.transform = "scale(1)";
+    container.style.transformOrigin = "top left";
+
+    let scale = Math.min(
+      container.parentElement.clientWidth / container.scrollWidth,
+      container.parentElement.clientHeight / container.scrollHeight
+    );
+
+    container.style.transform = "scale(" + scale + ")";
+  }
+
+  window.addEventListener("load", fitText);
+  window.addEventListener("resize", fitText);
+</script>
 
 </body>
 </html>
